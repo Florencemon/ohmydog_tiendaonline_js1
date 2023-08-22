@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
+
+:root {
+    --primary-color: #FFA500;        
+    --secondary-color: #FFC200;  
+     
+    
+}
+
+.mt4-custom {
+    font-family: 'Courier New' !important;
+    letter-spacing: -1px;
+}
+ 
+h1 {
+    font-family: 'DM Serif Display', serif !important;
+   
+}
+
+.container mt-5 {
+   background-color: #ccc;
+   color:red;
+}
+
+.text-primary {
+    font-size: 24px;
+    color: var(--primary-color); 
+}
+
+.custom-container {
+   
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    
+}
+
+.form-select {
+    width: 100%;
+}
+
+.form-select:focus {
+    border-color: #FFA500;
+    box-shadow: 0 0 0 0.25rem rgba(255, 165, 0, 0.25);
+}
