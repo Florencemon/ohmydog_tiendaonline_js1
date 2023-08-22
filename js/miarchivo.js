@@ -1,4 +1,4 @@
-// Función para calcular el costo total de productos
+// costo total de los productos
 function calcularCostoTotal(productos) {
     let costoTotal = 0;
     for (let producto of productos) {
@@ -7,7 +7,7 @@ function calcularCostoTotal(productos) {
     return costoTotal;
 }
 
-// Evento que se ejecuta cuando se carga la página
+// contador de productos
 window.onload = function () {
     const productos = [];
     let contadorProductos = 0;
@@ -19,11 +19,13 @@ window.onload = function () {
     const productosDiv = document.getElementById('productos');
     const costoTotalSpan = document.getElementById('costoTotal');
 
+    // calcular o no el 21% de IVA
+
     agregarProductoButton.addEventListener('click', function () {
         const nombre = nombreProductoInput.value.toUpperCase();
         const precioInicial = parseFloat(precioProductoInput.value);
         const aplicarIVA = parseInt(ivaProductoInput.value) === 1;
-        const ivaPorcentaje = 0.21; // 21% de IVA
+        const ivaPorcentaje = 0.21; 
 
         if (nombre && !isNaN(precioInicial)) {
             const precioFinal = aplicarIVA ? precioInicial * (1 + ivaPorcentaje) : precioInicial;
