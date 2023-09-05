@@ -1,4 +1,4 @@
-// costo total de los productos
+// calc costo total de los productos
 function calcularCostoTotal(productos) {
     let costoTotal = 0;
     for (let producto of productos) {
@@ -7,60 +7,42 @@ function calcularCostoTotal(productos) {
     return costoTotal;
 }
 
-// contador de productos
+// contador original
 window.onload = function () {
     const productos = [];
     let contadorProductos = 0;
 
-    const nombreProductoInput = document.getElementById('nombreProducto');
-    const precioProductoInput = document.getElementById('precioProducto');
-    const ivaProductoInput = document.getElementById('ivaProducto');
-    const agregarProductoButton = document.getElementById('agregarProducto');
-    const productosDiv = document.getElementById('productos');
-    const costoTotalSpan = document.getElementById('costoTotal');
+    // Nueva pre-entrega  
+    alert('Te damos la bienvenida a la tienda Oh my Dog!🐶');
+    alert('Por favor, seleccioná el producto, el precio y si corresponde o no que se aplique IVA');
+    alert('Al final, tendrás una suma de totalizada');
+    alert('Vamos a comenzar 😊');
 
-    // calcular o no el 21% de IVA
+    while (true) { 
+            const nombre = prompt('Ingrese el nombre del producto (o deje en blanco para salir):');
+        if (!nombre) break;
 
-    agregarProductoButton.addEventListener('click', function () {
-        const nombre = nombreProductoInput.value.toUpperCase();
-        const precioInicial = parseFloat(precioProductoInput.value);
-        const aplicarIVA = parseInt(ivaProductoInput.value) === 1;
-        const ivaPorcentaje = 0.21; 
+        const precioInicial = parseFloat(prompt('Ingrese el precio del producto:'));
+          const aplicarIVA = prompt('¿Aplicar IVA 21%?  (si/no)').toLowerCase() === 'si';
+        const ivaPorcentaje = 0.21;
 
         if (nombre && !isNaN(precioInicial)) {
-            const precioFinal = aplicarIVA ? precioInicial * (1 + ivaPorcentaje) : precioInicial;
-            const producto = { nombre, precioInicial, aplicarIVA, precioFinal };
+              const precioFinal = aplicarIVA ? precioInicial * (1 + ivaPorcentaje) : precioInicial;
+               const producto = { nombre, precioInicial, aplicarIVA, precioFinal };
             productos.push(producto);
 
-            contadorProductos++;
+             contadorProductos++;
 
-            const productoDiv = document.createElement('div');
-            const spanProducto = document.createElement('span');
-            spanProducto.textContent = `Producto ${contadorProductos}: `;
-            spanProducto.style.color = getComputedStyle(document.documentElement).getPropertyValue('--secondary-color');
+                        // resultados   utilizando console.log()
+                        console.log(`Producto ${contadorProductos}: ${nombre} - Precio Final: $${precioFinal.toFixed(2)}`);
+                        console.log(`Costo Total: $${calcularCostoTotal(productos).toFixed(2)}`);
+                    }
+    }
 
-            const spanNombre = document.createElement('span');
-            spanNombre.textContent = nombre;
+        // mensaje de total de la compra 
+        const totalCompra = calcularCostoTotal(productos).toFixed(2);
+        alert(`El total de su compra es: $${totalCompra}`);
 
-            productoDiv.appendChild(spanProducto);
-            productoDiv.appendChild(spanNombre);
-
-            const spanPrecio = document.createElement('span');
-            spanPrecio.textContent = `: $${precioFinal.toFixed(2)}`;
-            productoDiv.appendChild(spanPrecio);
-
-            const spanIva = document.createElement('span');
-            spanIva.textContent = aplicarIVA ? ' (IVA 21%)' : ' (Sin IVA)';
-            productoDiv.appendChild(spanIva);
-
-            productosDiv.appendChild(productoDiv);
-
-            const nuevoCostoTotal = calcularCostoTotal(productos);
-            costoTotalSpan.textContent = `$${nuevoCostoTotal.toFixed(2)}`;
-
-            nombreProductoInput.value = '';
-            precioProductoInput.value = '';
-            ivaProductoInput.value = '0';
-        }
-    });
+    // mensaje de alerta final para indicar que la pre-entrega está lista
+    alert('Pre-emtrega lista, espero les guste! 😊');
 }
